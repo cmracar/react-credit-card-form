@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 
 const App = () => {
   const [cardLayer, setCardLayer] = useState(true);
@@ -49,6 +49,11 @@ const App = () => {
   useEffect(() => {
     numberOne.current?.focus()
   }, []);
+
+  const submitForm = (event: FormEvent) => {
+    event.preventDefault()
+    console.log(`Dear ${cardName}, Your Submit Success!`)
+  }
 
   return (
     <>
@@ -100,8 +105,8 @@ const App = () => {
                       <div className="cvc">{cardCVC}</div>
                     </div>
                   </div>
-                  
-                  
+
+
                 </div>
 
               </div>
@@ -111,9 +116,7 @@ const App = () => {
 
           <hr />
           <div className="form-group">
-            <form>
-
-
+            <form onSubmit={submitForm}>
               <label htmlFor="cardNumber">Card Number: </label>
               <div className="row">
                 <div className="col">
@@ -156,13 +159,16 @@ const App = () => {
                 <div className="col">
 
                   <label htmlFor="cvc">CVC: </label>
-                  <input type="text" maxLength={3} className="form-control" placeholder="***" onSelect={() => setCardLayer(false)} onBlur={() => setCardLayer(true)} onChange={(e) => setCardCVC(e.target.value)} name="cvc" id="cvc" />
+                  <input type="text" maxLength={3} className="form-control" placeholder="***" onSelect={() => setCardLayer(false)} onBlur={() => setCardLayer(true)} onChange={(e) => setCardCVC(e.target.value === "" ? "***" : e.target.value)} name="cvc" id="cvc" />
 
                 </div>
 
               </div>
 
-              <button type="submit">Submit</button>
+              <div className="text-right mt-2">
+                <button type="submit" className="submit-button">Submit</button>
+              </div>
+
             </form>
           </div>
 
