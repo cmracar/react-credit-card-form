@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+label {
+  margin: 10px 3px;
+  font-weight: 400;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.scene {
+  perspective: 600px;
   display: flex;
+  height: 182px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card {
+  position: absolute;
+  display: flex;
+  width: 3.37in;
+  height: 182px;
+  border-radius: 15px;
+  padding: 10px;
+  background-image: url("./assets/images/card.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-container.isFlipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+
+.mc-logo {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+}
+
+.chip-logo {
+  position: absolute;
+  background-image: url("./assets/images/chip.png");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  top: 30px;
+  left: 30px;
+}
+
+@font-face {
+  font-family: "cardFont";
+  src: url("./assets/fonts/credit.ttf")
+}
+
+.card-number {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.973);
+  letter-spacing: 3px;
+  font-size: 20px;
+  position: absolute;
+  top: 85px;
+  left: 0px;
+  width: 100%;
+  font-family: "cardFont";
+
+}
+
+.card-name {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.973);
+  letter-spacing: 3px;
+  font-size: 16px;
+  position: absolute;
+  top: 140px;
+  left: 35px;
+  font-family: "cardFont";
+}
+
+.spanSlice {
+  margin-top: 3px;
+  font-size: 20px;
+}
+
+.card-valid {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.973);
+  letter-spacing: 3px;
+  font-size: 16px;
+  position: absolute;
+  top: 140px;
+  right: 80px;
+  font-family: "cardFont";
+}
+
+.black-area {
+  position: absolute;
+  left: 0px;
+  top: 15px;
+  width: 100%;
+  height: 35px;
+  background-color: rgb(32, 32, 32);
+}
+
+.signature-area {
+  background-color: #FFF;
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  width: 240px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  height: 35px;
+}
+
+.signature {
+  background-image: url("./assets/images/signature.png");
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.cvc {
+  font-weight: 400;
+  text-align: right;
+  padding-right: 20px;
 }
